@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
+
 import 'package:moviesapp/src/widgets/card_swiper.dart';
 
 class HomePage extends StatelessWidget {

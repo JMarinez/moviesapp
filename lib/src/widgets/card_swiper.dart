@@ -8,7 +8,7 @@ class CardSwiper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
+
     final _screenSize = MediaQuery.of(context).size;
 
     return Container(
@@ -24,7 +24,7 @@ class CardSwiper extends StatelessWidget {
             ),
           );
         },
-        itemCount: 3,
+        itemCount: movies.length,
         itemWidth: _screenSize.width * 0.7,
         itemHeight: _screenSize.height * 0.5,
         // pagination: SwiperPagination(),
