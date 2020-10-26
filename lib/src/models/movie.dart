@@ -61,7 +61,7 @@ class Movie {
     backdropPath = json['backdrop_path'];
     originalLanguage = json['original_language'];
     originalTitle = json['original_title'];
-    genreIds = json['genre_ids'].parse<int>();
+    genreIds = json['genre_ids'].cast<int>();
     title = json['title'];
     voteAverage = json['vote_average'] / 1;
     overview = json['overview'];
