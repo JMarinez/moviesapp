@@ -67,4 +67,12 @@ class Movie {
     overview = json['overview'];
     releaseDate = json['release_date'];
   }
+
+  String getPosterImage() {
+    if (posterPath == null) {
+      return 'https://cdn-a.william-reed.com/var/wrbm_gb_food_pharma/storage/images/1/8/6/0/230681-6-eng-GB/IB3-Limited-SIC-Pharma-April-20142_news_large.jpg';
+    } else {
+      return 'https://image.tmdb.org/t/p/w500/$posterPath';
+    }
+  }
 }
