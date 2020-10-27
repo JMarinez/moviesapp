@@ -20,9 +20,10 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           _swipeMovieCards(),
+          _footer(context),
         ],
       ),
     );
@@ -40,6 +41,22 @@ class HomePage extends StatelessWidget {
           return Center(child: CircularProgressIndicator());
         }
       },
+    );
+  }
+
+  Widget _footer(BuildContext context) {
+    return Container(
+      child: Column(
+        children: <Widget>[
+          Text('Popular', style: Theme.of(context).textTheme.subtitle1),
+          FutureBuilder(
+            future: movieProvider.getPopularMovies(),
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              return Container();
+            },
+          ),
+        ],
+      ),
     );
   }
 }
