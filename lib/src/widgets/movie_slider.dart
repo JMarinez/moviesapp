@@ -18,25 +18,34 @@ class MovieSlider extends StatelessWidget {
           initialPage: 1,
           viewportFraction: 0.3,
         ),
-        children: _movieCards(),
+        children: _movieCards(context, screenSize),
       ),
     );
   }
 
-  List<Widget> _movieCards() {
+  List<Widget> _movieCards(BuildContext context, Size screenSize) {
     return movies.map((movie) {
       return Container(
         margin: EdgeInsets.only(right: 15.0),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(20.0),
-          child: FadeInImage(
-            fit: BoxFit.cover,
-            placeholder: AssetImage('assets/no-image.jpg'),
-            image: NetworkImage(
-              movie.getPosterImage(),
+        child: Column(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20.0),
+              child: FadeInImage(
+                fit: BoxFit.cover,
+                placeholder: AssetImage('assets/no-image.jpg'),
+                image: NetworkImage(
+                  movie.getPosterImage(),
+                ),
+                height: screenSize.height * 0.18,
+              ),
             ),
-            height: 160.0,
-          ),
+            Text(
+              movie.title,
+              overflow: TextOverflow.ellipsis,
+              style: Theme.of(context).textTheme.caption,
+            ),
+          ],
         ),
       );
     }).toList();
