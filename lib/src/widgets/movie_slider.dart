@@ -16,7 +16,7 @@ class MovieSlider extends StatelessWidget {
         pageSnapping: false,
         controller: PageController(
           initialPage: 1,
-          viewportFraction: 0.3,
+          viewportFraction: 0.25,
         ),
         children: _movieCards(context, screenSize),
       ),
@@ -30,14 +30,14 @@ class MovieSlider extends StatelessWidget {
         child: Column(
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(20.0),
+              borderRadius: BorderRadius.circular(10.0),
               child: FadeInImage(
                 fit: BoxFit.cover,
                 placeholder: AssetImage('assets/no-image.jpg'),
                 image: NetworkImage(
                   movie.getPosterImage(),
                 ),
-                height: screenSize.height * 0.18,
+                height: screenSize.height * 0.15,
               ),
             ),
             Text(

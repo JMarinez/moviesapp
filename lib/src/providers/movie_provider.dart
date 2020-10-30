@@ -30,7 +30,6 @@ class MovieProvider {
       {
         'api_key': _apiKey,
         'language': _language,
-        'page': _moviePages.toString(),
       },
     );
 
@@ -52,6 +51,7 @@ class MovieProvider {
       {
         'api_key': _apiKey,
         'language': _language,
+        'page': _moviePages.toString(),
       },
     );
 
