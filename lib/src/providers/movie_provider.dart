@@ -10,6 +10,7 @@ class MovieProvider {
   String _language = 'en-US';
 
   int _moviePages = 0;
+  bool _loading = false;
 
   List<Movie> _movies = List<Movie>();
 
@@ -43,6 +44,11 @@ class MovieProvider {
 
   Future<List<Movie>> getPopularMovies() async {
 
+    if (_loading) {
+      return [];
+    }
+
+    _loading = true;
     _moviePages++;
 
     final url = Uri.http(
@@ -62,6 +68,8 @@ class MovieProvider {
 
     _movies.addAll(movies.movies);
     popularMoviesSink(_movies);
+
+    _loading = false;
 
     return movies.movies;
   }
