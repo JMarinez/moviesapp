@@ -3,21 +3,30 @@ import 'package:moviesapp/src/models/movie.dart';
 
 class MovieSlider extends StatelessWidget {
   final List<Movie> movies;
+  final Function nextPage;
 
-  MovieSlider({@required this.movies});
+  MovieSlider({@required this.movies, @required this.nextPage});
+
+  final _pageController = PageController(
+    initialPage: 1,
+    viewportFraction: 0.25,
+  );
 
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
 
+    _pageController.addListener(() {
+      if (_pageController.position.pixels >= _pageController.position.maxScrollExtent - 200) {
+        nextPage();
+      }
+    });
+
     return Container(
       height: screenSize.height * 0.2,
       child: PageView(
         pageSnapping: false,
-        controller: PageController(
-          initialPage: 1,
-          viewportFraction: 0.25,
-        ),
+        controller: _pageController,
         children: _movieCards(context, screenSize),
       ),
     );

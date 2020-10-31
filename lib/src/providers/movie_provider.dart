@@ -13,11 +13,11 @@ class MovieProvider {
 
   List<Movie> _movies = List<Movie>();
 
-  final _popularMovieStreamController = StreamController();
+  final _popularMovieStreamController = StreamController<List<Movie>>.broadcast();
 
-  Function(List<Movie>) get _popularMoviesSink => _popularMovieStreamController.sink.add;
+  Function(List<Movie>) get popularMoviesSink => _popularMovieStreamController.sink.add;
 
-  Stream<List<Movie>> get _popularMoviesStream => _popularMovieStreamController.stream;
+  Stream<List<Movie>> get popularMoviesStream => _popularMovieStreamController.stream;
 
   void dispose() {
     _popularMovieStreamController?.close();
@@ -61,7 +61,7 @@ class MovieProvider {
     final movies = Movies.fromJsonList(decodedData['results']);
 
     _movies.addAll(movies.movies);
-    _popularMoviesSink(movies.movies);
+    popularMoviesSink(_movies);
 
     return movies.movies;
   }
