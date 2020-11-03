@@ -37,7 +37,7 @@ class MovieSlider extends StatelessWidget {
   }
 
   Widget _movieCards(BuildContext context, Size screenSize, Movie movie) {
-    return Container(
+    final movieCard = Container(
       margin: EdgeInsets.only(right: 15.0),
       child: Column(
         children: [
@@ -59,6 +59,11 @@ class MovieSlider extends StatelessWidget {
           ),
         ],
       ),
+    );
+
+    return GestureDetector(
+      child: movieCard,
+      onTap: () => Navigator.pushNamed(context, 'movieDetail'),
     );
   }
 }
